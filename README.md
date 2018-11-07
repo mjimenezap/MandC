@@ -1,2 +1,1 @@
-"""Proyecto SE"""
-#Miguel and Cristian
+### Solar Panel Project
