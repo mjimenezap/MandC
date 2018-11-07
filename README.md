@@ -1,1 +1,1 @@
-"""Proyecto SE"""
+### Solar Panel Project
