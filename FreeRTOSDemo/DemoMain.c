@@ -26,8 +26,17 @@
 SemaphoreHandle_t sem_serie; // Semáforo para el acceso a la UART
 
 #define PIN_ADC 0
-#define FRECUENCIA 5000
+#define FRECUENCIA 50
 #define PIN_PWM (1<<15)//PIN RB15
+#define BAUD_RATE 115200
+#define TAM_TR_UART 250
+#define TAM_REC_UART 250
+#define PR_INT_TX 5
+
+#define REF 0
+#define UMBRAL_DORMIR 100
+#define UMBRAL_REGPERM 10
+#define MARGEN_REFPERM 5 // Luxes
 
 // Prototipos de funciones
 void __attribute__((__interrupt__,no_auto_psv)) _MPWM1Interrupt(void);
@@ -50,20 +59,23 @@ int main(void)
     //Incializar Hardware
     inicializarADCPolling(1<<PIN_ADC);
     InicializarReloj();
-    InicializarHora();
-    InicializaEntradas();
-    InicializarSerie();
     inicializarPWM(PIN_PWM, FRECUENCIA);
     activarPWM(PIN_PWM);
     setFrecuencia(FRECUENCIA);
+    inicializarUART(BAUD_RATE);
+
+    int cont_controlado;
 
 
     // Se inicializa el semáforo
     vSemaphoreCreateBinary(sem_serie);
 
     // Se crean las tareas
-    xTaskCreate(ImprimeHora,   "ImpHora", TAM_PILA, NULL,
-                PRIO_IMP_HORA, NULL);
+    xTaskCreate(BucleScan,
+    (const signed portCHAR * const) "BucScan",
+              BUCLE_SCAN_STACK_SIZE, NULL, BUCLE_SCAN_PRIO,
+              (xTaskHandle * ) NULL );
+
     xTaskCreate(EnviaEntradas, "EnvEntr", TAM_PILA, NULL,
                 PRIO_ENV_ENTR, NULL);
     xTaskCreate(ProcesaRecSerie,   "PrSer", TAM_PILA_SERIE, NULL,
@@ -74,3 +86,53 @@ int main(void)
                            // planificador.
     return 0; // En teoría no se debe llegar nunca aquí.
 }
+
+
+void BucleScan(void){ // Tarea principal
+    // Declaracion de variables
+
+    while(1){
+
+        if (cont_controlado==UMBRAL_DORMIR){ 
+            cont_controlado = 0;
+
+            //Poner el micro en reposo
+
+        }
+
+    }
+
+    return; // Nunca se llega aquí
+}
+
+
+void AplicarControl(void){ // Aplica control PI hasta alcanzar regimen permanente
+    //Definición de variables
+    int cont;
+    int lectura;
+
+    cont_controlado=0;
+
+    while(1){
+        // Lectura - protegida
+        Disable();
+
+        Enable();
+
+        // Control
+
+        // Regimen permanente
+        if (lectura < REF + MARGEN_REFPERM && lectura > REF - MARGEN_REFPERM){
+            cont++;
+            if (cont == UMBRAL_REGPERM){
+                // Volver a la tarea 
+            }
+
+        }else{
+            cont = 0;
+        }
+
+
+    }
+}
+
