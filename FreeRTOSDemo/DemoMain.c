@@ -52,6 +52,32 @@ void __attribute__((__interrupt__,no_auto_psv)) _MPWM1Interrupt(void){
     return;
 }
 
+/* ESTRUCTURA DEL TASK SCHEDULER */
+/*
+ * Tenemos principalmente 2 tareas pricipales: BucleScan y AplicarControl
+ *
+ * BucleScan con la prioridad más baja. Pone a dormir el micro tras alacanzar el timeout especificado para el timer
+ * Inicio con semaforo
+ *
+ * La forma de salir de esta tarea es mediante la interrupción (proporcionada por hardware) ante un cambio en
+ * de iluminosidad. Asignamos una ISR a esta interrupción, que se encargará de:
+ *      - Deshabilitar la flag de interrupción.
+ *      - Meter dato en cola, para que comience la tarea del control.
+ *
+ * La tarea de control, según se ejecuta (antes del while), deshabilita la interrupción para no volver a meterse mientras se realiza el control.
+ * Al final de la tarea (cuando se alcanza timeout del régimen permanente), se vuele al bucle scan.
+ *
+ * El control vuelve al bucle scan ...¿como?
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ */
+
 
 
 int main(void)
