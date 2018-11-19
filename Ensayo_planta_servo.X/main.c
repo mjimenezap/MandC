@@ -17,7 +17,8 @@
 
 #define PIN_ADC_1 0
 #define PIN_ADC_2 1
-#define TS 1 //1 décima de milisegundo => 0.1 ms
+//#define TS 1 //1 décima de milisegundo => 0.1 ms
+#define TS 10 //10 décimas de milisegundo => 1 ms
 #define BAUD_RATE 115200
 #define TAM_TR_UART 250
 #define TAM_REC_UART 250
@@ -29,7 +30,8 @@
 #define Mando0  150//Se corresponde con 0.3 ms de 20 ms
 #define Mando45 380//Se corresponde con 0.75 ms de 20 ms
 #define Mando90 600//Se corresponde con 1.2 ms de 20 ms
-
+#define Mando135 825//Se corresponde con 1.65 ms de 20 ms
+#define Mando180 1050//Se corresponde con 2.1 ms de 20 ms
 
 void InitDevices(void);
 void Ensayo(int i);
@@ -42,7 +44,9 @@ void main(void) {
     int contador = 0;
     unsigned int luxes1;
     unsigned int luxes2;
-    int debug = 0;
+   // int debug = 0;
+    int debug1 =0;
+    int debug2= 0;
 
     // Inicialización de dispositivos
     InitDevices();  
@@ -51,39 +55,44 @@ void main(void) {
     while(1){
         
 
-        if((contador >= 1800) && (contador <= 2000)){ //Primera parte entre 1.8 y 2 seg
+        //if((contador >= 1800) && (contador <= 2000)){ //Primera parte entre 1.8 y 2 seg PARA 0.1 ms
+        if((contador >= 480) && (contador <= 500)){ //Primera parte entre 1.8 y 2 seg PARA 1 ms //180,200
             luxes2 = LeerLuxes(PIN_ADC_2); 
             luxes1 = LeerLuxes(PIN_ADC_1);
-             
-           
-            // sprintf(str,"45,%d, %d;\n", luxes1,luxes2);
-              //luxes = LeerLuxes(PIN_ADC_1)-LeerLuxes(PIN_ADC_2);
-              //sprintf(str,"45, %d;\n", luxes);
-            //putsUART(str);
-            
+            //debug1++;
+           // if(debug1==5){       // ==5 hallado de forma empírica
+                //sprintf(str,"45,%d, %d;\n", luxes1,luxes2);
+                luxes = LeerLuxes(PIN_ADC_1)-LeerLuxes(PIN_ADC_2);
+                sprintf(str,"45, %d;\n", luxes);
+                putsUART(str);
+                debug1=0;
+            //}
 
-              
-        } else if ((contador >= 2000) && (contador <= 2200)){ // Segunda parte entre 2 y 2.2 seg
+        //} else if ((contador >= 2000) && (contador <= 2200)){ // Segunda parte entre 2 y 2.2 seg PARA 0.1 ms
+        } else if ((contador >= 980) && (contador <= 1000)){ // Segunda parte entre 2 y 2.2 seg PARA 1 ms //200,220
             luxes1 = LeerLuxes(PIN_ADC_1);
             luxes2 = LeerLuxes(PIN_ADC_2);
-            
-            //sprintf(str,"90,%d, %d;\n", luxes1,luxes2);
-            //luxes = LeerLuxes(PIN_ADC_1)-LeerLuxes(PIN_ADC_2);
-            //sprintf(str,"90, %d;\n", luxes);
-            //putsUART(str);
-
+            //debug2++;
+            //if(debug2==5){
+                //sprintf(str,"90,%d, %d;\n", luxes1,luxes2);
+                luxes = LeerLuxes(PIN_ADC_1)-LeerLuxes(PIN_ADC_2);
+                sprintf(str,"135, %d;\n", luxes);
+                putsUART(str);
+                debug2=0;
+            //}
         }
         
-        debug++;
+        /*debug++;
         if(debug==5000){
             debug=0;
             sprintf(str,"45,%d, %d;\n", luxes1,luxes2);
             putsUART(str);
         }
-        
+        */
         Ensayo(contador);
         contador = contador +1;
-        if (contador == 4000){
+        //if (contador == 4000){ //PARA 0.1 ms
+        if (contador == 1000){ //PARA 1 ms //400
             contador = 0;
         }
         tareaIdle();
@@ -102,11 +111,13 @@ void Ensayo(int i){
                 setDcPWM(PIN_PWM, Mando45);
                 break;
                 
-            case 2000:
-                setDcPWM(PIN_PWM, Mando90);
+            //case 2000: //PARA 0.1 ms
+            case 500: //200
+                setDcPWM(PIN_PWM, Mando135);
                 break;
                 
-            case 4000: // Cada 4 segundos repetimos el ensayo
+            //case 4000: // Cada 4 segundos repetimos el ensayo PARA 0.1 ms
+            case 1000: // Cada 4 segundos repetimos el ensayo PARA 1 ms    //400
                 i = 0;
                 break;
             default:
@@ -118,8 +129,7 @@ void Ensayo(int i){
 
 void InitDevices(void){
     
-    inicializarADCPolling(1<<PIN_ADC_1);
-    inicializarADCPolling(1<<PIN_ADC_2);
+    inicializarADCPolling(1<<PIN_ADC_1 | 1<<PIN_ADC_2);
     inicializarReloj();
     inicializarTareaIdle(TS);
     inicializarUART(BAUD_RATE);
@@ -127,7 +137,7 @@ void InitDevices(void){
     activarPWM(PIN_PWM);
     setFrecuencia(FRECUENCIA);
 
-    setDcPWM(PIN_PWM, Mando0);
+    setDcPWM(PIN_PWM, Mando45);
     //__delay_us(100000);  //Para que espere 1 segundo en la posición de reset
    
     return;
