@@ -4,11 +4,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Proyecto/FreeRTOSDemo/KernelFreeRTOS/include/FreeRTOS.h</file>
-            <file>file:/D:/Proyecto/FreeRTOSDemo/KernelFreeRTOS/croutine.c</file>
-            <file>file:/D:/Proyecto/FreeRTOSDemo/DemoMain.c</file>
-            <file>file:/D:/Proyecto/FreeRTOSDemo/DriverPicTrainer/config.c</file>
-            <file>file:/D:/Proyecto/FreeRTOSDemo/KernelFreeRTOS/tasks.c</file>
+            <file>file:/D:/MandC/FreeRTOSDemo/DemoMain.c</file>
         </group>
     </open-files>
 </project-private>

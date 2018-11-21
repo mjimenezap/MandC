@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=DriverPicTrainer/config.c KernelFreeRTOS/tasks.c KernelFreeRTOS/croutine.c KernelFreeRTOS/list.c KernelFreeRTOS/queue.c KernelFreeRTOS/timers.c KernelFreeRTOS/event_groups.c KernelFreeRTOS/heap_1.c KernelFreeRTOS/port.c KernelFreeRTOS/portasm_dsPIC.S Serie.c Entradas.c Hora.c DemoMain.c
+SOURCEFILES_QUOTED_IF_SPACED=DriverPicTrainer/config.c KernelFreeRTOS/tasks.c KernelFreeRTOS/croutine.c KernelFreeRTOS/list.c KernelFreeRTOS/queue.c KernelFreeRTOS/timers.c KernelFreeRTOS/event_groups.c KernelFreeRTOS/heap_1.c KernelFreeRTOS/port.c KernelFreeRTOS/portasm_dsPIC.S Serie.c Entradas.c Hora.c DemoMain.c sensor.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/DriverPicTrainer/config.o ${OBJECTDIR}/KernelFreeRTOS/tasks.o ${OBJECTDIR}/KernelFreeRTOS/croutine.o ${OBJECTDIR}/KernelFreeRTOS/list.o ${OBJECTDIR}/KernelFreeRTOS/queue.o ${OBJECTDIR}/KernelFreeRTOS/timers.o ${OBJECTDIR}/KernelFreeRTOS/event_groups.o ${OBJECTDIR}/KernelFreeRTOS/heap_1.o ${OBJECTDIR}/KernelFreeRTOS/port.o ${OBJECTDIR}/KernelFreeRTOS/portasm_dsPIC.o ${OBJECTDIR}/Serie.o ${OBJECTDIR}/Entradas.o ${OBJECTDIR}/Hora.o ${OBJECTDIR}/DemoMain.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/DriverPicTrainer/config.o.d ${OBJECTDIR}/KernelFreeRTOS/tasks.o.d ${OBJECTDIR}/KernelFreeRTOS/croutine.o.d ${OBJECTDIR}/KernelFreeRTOS/list.o.d ${OBJECTDIR}/KernelFreeRTOS/queue.o.d ${OBJECTDIR}/KernelFreeRTOS/timers.o.d ${OBJECTDIR}/KernelFreeRTOS/event_groups.o.d ${OBJECTDIR}/KernelFreeRTOS/heap_1.o.d ${OBJECTDIR}/KernelFreeRTOS/port.o.d ${OBJECTDIR}/KernelFreeRTOS/portasm_dsPIC.o.d ${OBJECTDIR}/Serie.o.d ${OBJECTDIR}/Entradas.o.d ${OBJECTDIR}/Hora.o.d ${OBJECTDIR}/DemoMain.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/DriverPicTrainer/config.o ${OBJECTDIR}/KernelFreeRTOS/tasks.o ${OBJECTDIR}/KernelFreeRTOS/croutine.o ${OBJECTDIR}/KernelFreeRTOS/list.o ${OBJECTDIR}/KernelFreeRTOS/queue.o ${OBJECTDIR}/KernelFreeRTOS/timers.o ${OBJECTDIR}/KernelFreeRTOS/event_groups.o ${OBJECTDIR}/KernelFreeRTOS/heap_1.o ${OBJECTDIR}/KernelFreeRTOS/port.o ${OBJECTDIR}/KernelFreeRTOS/portasm_dsPIC.o ${OBJECTDIR}/Serie.o ${OBJECTDIR}/Entradas.o ${OBJECTDIR}/Hora.o ${OBJECTDIR}/DemoMain.o ${OBJECTDIR}/sensor.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/DriverPicTrainer/config.o.d ${OBJECTDIR}/KernelFreeRTOS/tasks.o.d ${OBJECTDIR}/KernelFreeRTOS/croutine.o.d ${OBJECTDIR}/KernelFreeRTOS/list.o.d ${OBJECTDIR}/KernelFreeRTOS/queue.o.d ${OBJECTDIR}/KernelFreeRTOS/timers.o.d ${OBJECTDIR}/KernelFreeRTOS/event_groups.o.d ${OBJECTDIR}/KernelFreeRTOS/heap_1.o.d ${OBJECTDIR}/KernelFreeRTOS/port.o.d ${OBJECTDIR}/KernelFreeRTOS/portasm_dsPIC.o.d ${OBJECTDIR}/Serie.o.d ${OBJECTDIR}/Entradas.o.d ${OBJECTDIR}/Hora.o.d ${OBJECTDIR}/DemoMain.o.d ${OBJECTDIR}/sensor.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/DriverPicTrainer/config.o ${OBJECTDIR}/KernelFreeRTOS/tasks.o ${OBJECTDIR}/KernelFreeRTOS/croutine.o ${OBJECTDIR}/KernelFreeRTOS/list.o ${OBJECTDIR}/KernelFreeRTOS/queue.o ${OBJECTDIR}/KernelFreeRTOS/timers.o ${OBJECTDIR}/KernelFreeRTOS/event_groups.o ${OBJECTDIR}/KernelFreeRTOS/heap_1.o ${OBJECTDIR}/KernelFreeRTOS/port.o ${OBJECTDIR}/KernelFreeRTOS/portasm_dsPIC.o ${OBJECTDIR}/Serie.o ${OBJECTDIR}/Entradas.o ${OBJECTDIR}/Hora.o ${OBJECTDIR}/DemoMain.o
+OBJECTFILES=${OBJECTDIR}/DriverPicTrainer/config.o ${OBJECTDIR}/KernelFreeRTOS/tasks.o ${OBJECTDIR}/KernelFreeRTOS/croutine.o ${OBJECTDIR}/KernelFreeRTOS/list.o ${OBJECTDIR}/KernelFreeRTOS/queue.o ${OBJECTDIR}/KernelFreeRTOS/timers.o ${OBJECTDIR}/KernelFreeRTOS/event_groups.o ${OBJECTDIR}/KernelFreeRTOS/heap_1.o ${OBJECTDIR}/KernelFreeRTOS/port.o ${OBJECTDIR}/KernelFreeRTOS/portasm_dsPIC.o ${OBJECTDIR}/Serie.o ${OBJECTDIR}/Entradas.o ${OBJECTDIR}/Hora.o ${OBJECTDIR}/DemoMain.o ${OBJECTDIR}/sensor.o
 
 # Source Files
-SOURCEFILES=DriverPicTrainer/config.c KernelFreeRTOS/tasks.c KernelFreeRTOS/croutine.c KernelFreeRTOS/list.c KernelFreeRTOS/queue.c KernelFreeRTOS/timers.c KernelFreeRTOS/event_groups.c KernelFreeRTOS/heap_1.c KernelFreeRTOS/port.c KernelFreeRTOS/portasm_dsPIC.S Serie.c Entradas.c Hora.c DemoMain.c
+SOURCEFILES=DriverPicTrainer/config.c KernelFreeRTOS/tasks.c KernelFreeRTOS/croutine.c KernelFreeRTOS/list.c KernelFreeRTOS/queue.c KernelFreeRTOS/timers.c KernelFreeRTOS/event_groups.c KernelFreeRTOS/heap_1.c KernelFreeRTOS/port.c KernelFreeRTOS/portasm_dsPIC.S Serie.c Entradas.c Hora.c DemoMain.c sensor.c
 
 
 CFLAGS=
@@ -185,6 +185,13 @@ ${OBJECTDIR}/DemoMain.o: DemoMain.c  nbproject/Makefile-${CND_CONF}.mk
 	${MP_CC} $(MP_EXTRA_CC_PRE)  DemoMain.c  -o ${OBJECTDIR}/DemoMain.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/DemoMain.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -O2 -I"./" -I"KernelFreeRTOS/include" -msmart-io=1 -Wall -msfr-warn=off  
 	@${FIXDEPS} "${OBJECTDIR}/DemoMain.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
+${OBJECTDIR}/sensor.o: sensor.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/sensor.o.d 
+	@${RM} ${OBJECTDIR}/sensor.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  sensor.c  -o ${OBJECTDIR}/sensor.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/sensor.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -O2 -I"./" -I"KernelFreeRTOS/include" -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/sensor.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
 else
 ${OBJECTDIR}/DriverPicTrainer/config.o: DriverPicTrainer/config.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/DriverPicTrainer" 
@@ -276,6 +283,13 @@ ${OBJECTDIR}/DemoMain.o: DemoMain.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/DemoMain.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  DemoMain.c  -o ${OBJECTDIR}/DemoMain.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/DemoMain.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -O2 -I"./" -I"KernelFreeRTOS/include" -msmart-io=1 -Wall -msfr-warn=off  
 	@${FIXDEPS} "${OBJECTDIR}/DemoMain.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/sensor.o: sensor.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/sensor.o.d 
+	@${RM} ${OBJECTDIR}/sensor.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  sensor.c  -o ${OBJECTDIR}/sensor.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/sensor.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -O2 -I"./" -I"KernelFreeRTOS/include" -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/sensor.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 endif
 

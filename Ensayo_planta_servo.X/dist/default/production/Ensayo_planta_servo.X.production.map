@@ -132,12 +132,12 @@ Program Memory  [Origin = 0x200, Length = 0x15600]
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x200               0xe62          0x1593  (5523)
-.const                      0x1062                0x14            0x1e  (30)
-.text                       0x1076               0x798           0xb64  (2916)
-.dinit                      0x180e                0x78            0xb4  (180)
-.text                       0x1886                0x9e            0xed  (237)
+.const                      0x1062                0x18            0x24  (36)
+.text                       0x107a               0x798           0xb64  (2916)
+.dinit                      0x1812                0x78            0xb4  (180)
+.text                       0x188a                0x9e            0xed  (237)
 
-                 Total program memory used (bytes):         0x22b6  (8886) 6%
+                 Total program memory used (bytes):         0x22bc  (8892) 6%
 
 
 Ivt Memory  [Origin = 0x4, Length = 0xfc]
@@ -210,43 +210,43 @@ External Symbols in Program Memory (by address):
                   0x000f9e                  ___umoddi3
                   0x000fa6                  ___divdi3
                   0x001006                  ___moddi3
-                  0x001076                  _inicializarPWM
-                  0x0010ea                  _setFrecuencia
-                  0x001166                  _setDcPWM
-                  0x0011ca                  _activarPWM
-                  0x001234                  _desactivarPWM
-                  0x0012a2                  _inicializarPWM2
-                  0x0012ec                  _setFrecuencia2
-                  0x001368                  _setDcPWM2
-                  0x0013b0                  _activarPWM2
-                  0x0013d4                  _desactivarPWM2
-                  0x0013fc                  _inicializarUART
-                  0x00149e                  _procesarUART
-                  0x0014b0                  _putsUART
-                  0x0014cc                  _getcharUART
-                  0x0014fa                  _ponerEnColaTransmisionUART
-                  0x00153c                  _transmitirUART
-                  0x001546                  _main
-                  0x0015f0                  _Ensayo
-                  0x001620                  _InitDevices
-                  0x00164a                  _inicializarTareaIdle
-                  0x00171c                  _tareaIdle
-                  0x00172e                  _InterpolarSensor
-                  0x0017f0                  _LeerADC
-                  0x0017fc                  _LeerLuxes
-                  0x001886                  _inicializarReloj
-                  0x0018da                  _inicializarADCPolling
-                  0x001906                  _leerADCPolling
+                  0x00107a                  _inicializarPWM
+                  0x0010ee                  _setFrecuencia
+                  0x00116a                  _setDcPWM
+                  0x0011ce                  _activarPWM
+                  0x001238                  _desactivarPWM
+                  0x0012a6                  _inicializarPWM2
+                  0x0012f0                  _setFrecuencia2
+                  0x00136c                  _setDcPWM2
+                  0x0013b4                  _activarPWM2
+                  0x0013d8                  _desactivarPWM2
+                  0x001400                  _inicializarUART
+                  0x0014a2                  _procesarUART
+                  0x0014b4                  _putsUART
+                  0x0014d0                  _getcharUART
+                  0x0014fe                  _ponerEnColaTransmisionUART
+                  0x001540                  _transmitirUART
+                  0x00154a                  _main
+                  0x001600                  _Ensayo
+                  0x001624                  _InitDevices
+                  0x00164e                  _inicializarTareaIdle
+                  0x001720                  _tareaIdle
+                  0x001732                  _InterpolarSensor
+                  0x0017f4                  _LeerADC
+                  0x001800                  _LeerLuxes
+                  0x00188a                  _inicializarReloj
+                  0x0018de                  _inicializarADCPolling
+                  0x00190a                  _leerADCPolling
                   0xf80000                  __FBS.sec
                   0xf80004                  __FGS.sec
 
 External Symbols in Program Memory (by name):
 
-                  0x0015f0                  _Ensayo
-                  0x001620                  _InitDevices
-                  0x00172e                  _InterpolarSensor
-                  0x0017f0                  _LeerADC
-                  0x0017fc                  _LeerLuxes
+                  0x001600                  _Ensayo
+                  0x001624                  _InitDevices
+                  0x001732                  _InterpolarSensor
+                  0x0017f4                  _LeerADC
+                  0x001800                  _LeerLuxes
                   0x000348                  __DefaultInterrupt
                   0xf80000                  __FBS.sec
                   0xf80004                  __FGS.sec
@@ -285,30 +285,30 @@ External Symbols in Program Memory (by name):
                   0x00023c                  __psv_init
                   0x000200                  __resetPRI
                   0x0006b2                  __sprintf_cdnopuxX
-                  0x0011ca                  _activarPWM
-                  0x0013b0                  _activarPWM2
-                  0x001234                  _desactivarPWM
-                  0x0013d4                  _desactivarPWM2
-                  0x0014cc                  _getcharUART
-                  0x0018da                  _inicializarADCPolling
-                  0x001076                  _inicializarPWM
-                  0x0012a2                  _inicializarPWM2
-                  0x001886                  _inicializarReloj
-                  0x00164a                  _inicializarTareaIdle
-                  0x0013fc                  _inicializarUART
-                  0x001906                  _leerADCPolling
-                  0x001546                  _main
+                  0x0011ce                  _activarPWM
+                  0x0013b4                  _activarPWM2
+                  0x001238                  _desactivarPWM
+                  0x0013d8                  _desactivarPWM2
+                  0x0014d0                  _getcharUART
+                  0x0018de                  _inicializarADCPolling
+                  0x00107a                  _inicializarPWM
+                  0x0012a6                  _inicializarPWM2
+                  0x00188a                  _inicializarReloj
+                  0x00164e                  _inicializarTareaIdle
+                  0x001400                  _inicializarUART
+                  0x00190a                  _leerADCPolling
+                  0x00154a                  _main
                   0x000834                  _memcpy
-                  0x0014fa                  _ponerEnColaTransmisionUART
-                  0x00149e                  _procesarUART
-                  0x0014b0                  _putsUART
-                  0x001166                  _setDcPWM
-                  0x001368                  _setDcPWM2
-                  0x0010ea                  _setFrecuencia
-                  0x0012ec                  _setFrecuencia2
+                  0x0014fe                  _ponerEnColaTransmisionUART
+                  0x0014a2                  _procesarUART
+                  0x0014b4                  _putsUART
+                  0x00116a                  _setDcPWM
+                  0x00136c                  _setDcPWM2
+                  0x0010ee                  _setFrecuencia
+                  0x0012f0                  _setFrecuencia2
                   0x000842                  _strchr
-                  0x00171c                  _tareaIdle
-                  0x00153c                  _transmitirUART
+                  0x001720                  _tareaIdle
+                  0x001540                  _transmitirUART
                   0x0006a4                  sprintf_cdnopuxX.XXeo:_prout
 
 Memory Configuration
@@ -531,16 +531,16 @@ __FUID3
 .comment
  *(.comment)
 
-.debug_info       0x000000       0x2fda
+.debug_info       0x000000       0x2faa
  *(.debug_info)
- .debug_info      0x000000        0x207 build/default/production/main.o
- .debug_info      0x000207        0x5bc build/default/production/adc.o
- .debug_info      0x0007c3        0x526 build/default/production/config.o
- .debug_info      0x000ce9        0x355 build/default/production/idle.o
- .debug_info      0x00103e        0x72e build/default/production/pwm.o
- .debug_info      0x00176c        0x614 build/default/production/pwm2.o
- .debug_info      0x001d80        0x1b4 build/default/production/sensor.o
- .debug_info      0x001f34       0x10a6 build/default/production/uart.o
+ .debug_info      0x000000        0x201 build/default/production/main.o
+ .debug_info      0x000201        0x5b6 build/default/production/adc.o
+ .debug_info      0x0007b7        0x520 build/default/production/config.o
+ .debug_info      0x000cd7        0x34f build/default/production/idle.o
+ .debug_info      0x001026        0x728 build/default/production/pwm.o
+ .debug_info      0x00174e        0x60e build/default/production/pwm2.o
+ .debug_info      0x001d5c        0x1ae build/default/production/sensor.o
+ .debug_info      0x001f0a       0x10a0 build/default/production/uart.o
  *(.gnu.linkonce.wi.*)
 
 .debug_abbrev     0x000000        0x694
@@ -554,16 +554,16 @@ __FUID3
  .debug_abbrev    0x0004e7         0x7f build/default/production/sensor.o
  .debug_abbrev    0x000566        0x12e build/default/production/uart.o
 
-.debug_line       0x000000        0x73f
+.debug_line       0x000000        0x742
  *(.debug_line)
- .debug_line      0x000000         0x62 build/default/production/main.o
- .debug_line      0x000062         0xf5 build/default/production/adc.o
- .debug_line      0x000157         0xf4 build/default/production/config.o
- .debug_line      0x00024b        0x104 build/default/production/idle.o
- .debug_line      0x00034f        0x135 build/default/production/pwm.o
- .debug_line      0x000484        0x11c build/default/production/pwm2.o
- .debug_line      0x0005a0         0x50 build/default/production/sensor.o
- .debug_line      0x0005f0        0x14f build/default/production/uart.o
+ .debug_line      0x000000         0x65 build/default/production/main.o
+ .debug_line      0x000065         0xf5 build/default/production/adc.o
+ .debug_line      0x00015a         0xf4 build/default/production/config.o
+ .debug_line      0x00024e        0x104 build/default/production/idle.o
+ .debug_line      0x000352        0x135 build/default/production/pwm.o
+ .debug_line      0x000487        0x11c build/default/production/pwm2.o
+ .debug_line      0x0005a3         0x50 build/default/production/sensor.o
+ .debug_line      0x0005f3        0x14f build/default/production/uart.o
 
 .debug_frame      0x000000        0x410
  *(.debug_frame)
@@ -1851,47 +1851,47 @@ __c30_signature
  .ivt._U1RXInterrupt
                   0x00002a          0x2 build/default/production/uart.o
 
-.const              0x9062         0x14 load address 0x001062  
- .const             0x9062         0x14 build/default/production/main.o
+.const              0x9062         0x18 load address 0x001062  
+ .const             0x9062         0x18 build/default/production/main.o
 
-.text             0x001076        0x798
- .text            0x001076        0x22c build/default/production/pwm.o
-                  0x001076                  _inicializarPWM
-                  0x0010ea                  _setFrecuencia
-                  0x001166                  _setDcPWM
-                  0x0011ca                  _activarPWM
-                  0x001234                  _desactivarPWM
- .text            0x0012a2        0x15a build/default/production/pwm2.o
-                  0x0012a2                  _inicializarPWM2
-                  0x0012ec                  _setFrecuencia2
-                  0x001368                  _setDcPWM2
-                  0x0013b0                  _activarPWM2
-                  0x0013d4                  _desactivarPWM2
- .text            0x0013fc        0x14a build/default/production/uart.o
-                  0x0013fc                  _inicializarUART
-                  0x00149e                  _procesarUART
-                  0x0014b0                  _putsUART
-                  0x0014cc                  _getcharUART
-                  0x0014fa                  _ponerEnColaTransmisionUART
-                  0x00153c                  _transmitirUART
- .text            0x001546        0x104 build/default/production/main.o
-                  0x001546                  _main
-                  0x0015f0                  _Ensayo
-                  0x001620                  _InitDevices
- .text            0x00164a         0xe4 build/default/production/idle.o
-                  0x00164a                  _inicializarTareaIdle
-                  0x00171c                  _tareaIdle
- .text            0x00172e         0xe0 build/default/production/sensor.o
-                  0x00172e                  _InterpolarSensor
-                  0x0017f0                  _LeerADC
-                  0x0017fc                  _LeerLuxes
+.text             0x00107a        0x798
+ .text            0x00107a        0x22c build/default/production/pwm.o
+                  0x00107a                  _inicializarPWM
+                  0x0010ee                  _setFrecuencia
+                  0x00116a                  _setDcPWM
+                  0x0011ce                  _activarPWM
+                  0x001238                  _desactivarPWM
+ .text            0x0012a6        0x15a build/default/production/pwm2.o
+                  0x0012a6                  _inicializarPWM2
+                  0x0012f0                  _setFrecuencia2
+                  0x00136c                  _setDcPWM2
+                  0x0013b4                  _activarPWM2
+                  0x0013d8                  _desactivarPWM2
+ .text            0x001400        0x14a build/default/production/uart.o
+                  0x001400                  _inicializarUART
+                  0x0014a2                  _procesarUART
+                  0x0014b4                  _putsUART
+                  0x0014d0                  _getcharUART
+                  0x0014fe                  _ponerEnColaTransmisionUART
+                  0x001540                  _transmitirUART
+ .text            0x00154a        0x104 build/default/production/main.o
+                  0x00154a                  _main
+                  0x001600                  _Ensayo
+                  0x001624                  _InitDevices
+ .text            0x00164e         0xe4 build/default/production/idle.o
+                  0x00164e                  _inicializarTareaIdle
+                  0x001720                  _tareaIdle
+ .text            0x001732         0xe0 build/default/production/sensor.o
+                  0x001732                  _InterpolarSensor
+                  0x0017f4                  _LeerADC
+                  0x001800                  _LeerLuxes
 
-.dinit            0x00180e         0x78
- .dinit           0x00180e         0x78 data_init
+.dinit            0x001812         0x78
+ .dinit           0x001812         0x78 data_init
 
-.text             0x001886         0x9e
- .text            0x001886         0x54 build/default/production/config.o
-                  0x001886                  _inicializarReloj
- .text            0x0018da         0x4a build/default/production/adc.o
-                  0x0018da                  _inicializarADCPolling
-                  0x001906                  _leerADCPolling
+.text             0x00188a         0x9e
+ .text            0x00188a         0x54 build/default/production/config.o
+                  0x00188a                  _inicializarReloj
+ .text            0x0018de         0x4a build/default/production/adc.o
+                  0x0018de                  _inicializarADCPolling
+                  0x00190a                  _leerADCPolling

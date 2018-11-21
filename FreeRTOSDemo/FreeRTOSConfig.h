@@ -82,7 +82,7 @@
  *----------------------------------------------------------*/
 
 #define configUSE_PREEMPTION			1
-#define configUSE_IDLE_HOOK				0
+#define configUSE_IDLE_HOOK				1 // Es necesario para dormir el micro
 #define configUSE_TICK_HOOK				0
 #define configTICK_RATE_HZ				( ( TickType_t ) 200 ) // Tick de 5 ms
 #define configCPU_CLOCK_HZ				( ( unsigned long ) 39614000 )  /* Fosc / 2 */
