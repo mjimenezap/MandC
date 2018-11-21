@@ -61,10 +61,22 @@ void vApplicationIdleHook( void ); //En esta función se va a poner el código p
 //Interrupciones
 void __attribute__((__interrupt__,no_auto_psv)) _INT0Interrupt(void){
       
-    //Despierta el sistema
+    //Despierta el sistema (esto lo hace tanto esta interrupción  como la del Timer 1 (el del sistema operativo)))
     
     //Inicialización Timer 2
-
+    T2CONbits.TON = 0; // Disable Timer
+    T2CONbits.TCS = 0; // Select internal instruction cycle clock
+    T2CONbits.TGATE = 0; // Disable Gated Timer mode
+    T2CONbits.TCKPS = 0b11; // Select 1:8 Prescaler
+    T2CONbits.T32 = 0; // Disable 32-bit Timer mode
+    TMR2 = 0x00; // Clear timer register
+    PR2 =5000;//For 1 ms 
+    IPC1bits.T2IP = 0x02; // Set Timer 1 Interrupt Priority Level(priority less than timer 1 )
+    IFS0bits.T2IF = 0; // Clear Timer 1 Interrupt Flag
+    IEC0bits.T2IE = 1; // Enable Timer1 interrupt
+    T2CONbits.TON = 1; // Start Timer
+    
+    
     IFS0bits.INT0IF = 0;    //Clear the INT0 interrupt flag     
     return;
 }
@@ -137,7 +149,7 @@ int main(void)
     xTaskCreate(BucleScan,
     (const signed portCHAR * const) "BucScan",
               BUCLE_SCAN_STACK_SIZE, NULL, BUCLE_SCAN_PRIO,
-              (xTaskHandle * ) NULL );
+              (xTaskHandle * ) NULL ); // No entiendo esta tarea
 
     xTaskCreate(AplicarControl, "AplCtrl", TAM_PILA, NULL,
                 PRIO_ENV_ENTR, NULL);
@@ -153,8 +165,11 @@ int main(void)
 
 void vApplicationIdleHook( void ){
     //Apagar Timer 2 
-            //sleep();????
+    T2CONbits.TON = 0; 
+    //sleep();????
 }
+
+
 void BucleScan(void){ // Tarea principal
     // Declaracion de variables
 
@@ -179,7 +194,7 @@ void LeerDatos(void){ // Aplica control PI hasta alcanzar regimen permanente
     == pdTRUE ){
     
         Disable();
-        luxes2 = 2*LeerLuxes(PIN_ADC_2); 
+        luxes2 = 2*LeerLuxes(PIN_ADC_2);
         luxes1 = LeerLuxes(PIN_ADC_1);
         Enable();
 
