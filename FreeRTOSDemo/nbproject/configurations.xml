@@ -26,6 +26,10 @@
                      displayName="DriverPicTrainer"
                      projectFiles="true">
         <itemPath>DriverPicTrainer/config.c</itemPath>
+        <itemPath>DriverPicTrainer/adc.c</itemPath>
+        <itemPath>DriverPicTrainer/pwm.c</itemPath>
+        <itemPath>DriverPicTrainer/pwm2.c</itemPath>
+        <itemPath>DriverPicTrainer/uart.c</itemPath>
       </logicalFolder>
       <logicalFolder name="KernelFreeRTOS"
                      displayName="KernelFreeRTOS"
@@ -40,9 +44,6 @@
         <itemPath>KernelFreeRTOS/port.c</itemPath>
         <itemPath>KernelFreeRTOS/portasm_dsPIC.S</itemPath>
       </logicalFolder>
-      <itemPath>Serie.c</itemPath>
-      <itemPath>Entradas.c</itemPath>
-      <itemPath>Hora.c</itemPath>
       <itemPath>DemoMain.c</itemPath>
       <itemPath>sensor.c</itemPath>
     </logicalFolder>
@@ -277,6 +278,7 @@
         <property key="ToolFirmwareFilePath"
                   value="Press to browse for a specific firmware version"/>
         <property key="ToolFirmwareOption.UseLatestFirmware" value="true"/>
+        <property key="firmware.download.all" value="false"/>
         <property key="memories.bootflash" value="true"/>
         <property key="memories.configurationmemory" value="true"/>
         <property key="memories.dataflash" value="true"/>

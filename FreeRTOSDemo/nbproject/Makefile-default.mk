@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=DriverPicTrainer/config.c KernelFreeRTOS/tasks.c KernelFreeRTOS/croutine.c KernelFreeRTOS/list.c KernelFreeRTOS/queue.c KernelFreeRTOS/timers.c KernelFreeRTOS/event_groups.c KernelFreeRTOS/heap_1.c KernelFreeRTOS/port.c KernelFreeRTOS/portasm_dsPIC.S Serie.c Entradas.c Hora.c DemoMain.c sensor.c
+SOURCEFILES_QUOTED_IF_SPACED=DriverPicTrainer/config.c KernelFreeRTOS/tasks.c KernelFreeRTOS/croutine.c KernelFreeRTOS/list.c KernelFreeRTOS/queue.c KernelFreeRTOS/timers.c KernelFreeRTOS/event_groups.c KernelFreeRTOS/heap_1.c KernelFreeRTOS/port.c KernelFreeRTOS/portasm_dsPIC.S DemoMain.c sensor.c DriverPicTrainer/adc.c DriverPicTrainer/pwm.c DriverPicTrainer/pwm2.c DriverPicTrainer/uart.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/DriverPicTrainer/config.o ${OBJECTDIR}/KernelFreeRTOS/tasks.o ${OBJECTDIR}/KernelFreeRTOS/croutine.o ${OBJECTDIR}/KernelFreeRTOS/list.o ${OBJECTDIR}/KernelFreeRTOS/queue.o ${OBJECTDIR}/KernelFreeRTOS/timers.o ${OBJECTDIR}/KernelFreeRTOS/event_groups.o ${OBJECTDIR}/KernelFreeRTOS/heap_1.o ${OBJECTDIR}/KernelFreeRTOS/port.o ${OBJECTDIR}/KernelFreeRTOS/portasm_dsPIC.o ${OBJECTDIR}/Serie.o ${OBJECTDIR}/Entradas.o ${OBJECTDIR}/Hora.o ${OBJECTDIR}/DemoMain.o ${OBJECTDIR}/sensor.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/DriverPicTrainer/config.o.d ${OBJECTDIR}/KernelFreeRTOS/tasks.o.d ${OBJECTDIR}/KernelFreeRTOS/croutine.o.d ${OBJECTDIR}/KernelFreeRTOS/list.o.d ${OBJECTDIR}/KernelFreeRTOS/queue.o.d ${OBJECTDIR}/KernelFreeRTOS/timers.o.d ${OBJECTDIR}/KernelFreeRTOS/event_groups.o.d ${OBJECTDIR}/KernelFreeRTOS/heap_1.o.d ${OBJECTDIR}/KernelFreeRTOS/port.o.d ${OBJECTDIR}/KernelFreeRTOS/portasm_dsPIC.o.d ${OBJECTDIR}/Serie.o.d ${OBJECTDIR}/Entradas.o.d ${OBJECTDIR}/Hora.o.d ${OBJECTDIR}/DemoMain.o.d ${OBJECTDIR}/sensor.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/DriverPicTrainer/config.o ${OBJECTDIR}/KernelFreeRTOS/tasks.o ${OBJECTDIR}/KernelFreeRTOS/croutine.o ${OBJECTDIR}/KernelFreeRTOS/list.o ${OBJECTDIR}/KernelFreeRTOS/queue.o ${OBJECTDIR}/KernelFreeRTOS/timers.o ${OBJECTDIR}/KernelFreeRTOS/event_groups.o ${OBJECTDIR}/KernelFreeRTOS/heap_1.o ${OBJECTDIR}/KernelFreeRTOS/port.o ${OBJECTDIR}/KernelFreeRTOS/portasm_dsPIC.o ${OBJECTDIR}/DemoMain.o ${OBJECTDIR}/sensor.o ${OBJECTDIR}/DriverPicTrainer/adc.o ${OBJECTDIR}/DriverPicTrainer/pwm.o ${OBJECTDIR}/DriverPicTrainer/pwm2.o ${OBJECTDIR}/DriverPicTrainer/uart.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/DriverPicTrainer/config.o.d ${OBJECTDIR}/KernelFreeRTOS/tasks.o.d ${OBJECTDIR}/KernelFreeRTOS/croutine.o.d ${OBJECTDIR}/KernelFreeRTOS/list.o.d ${OBJECTDIR}/KernelFreeRTOS/queue.o.d ${OBJECTDIR}/KernelFreeRTOS/timers.o.d ${OBJECTDIR}/KernelFreeRTOS/event_groups.o.d ${OBJECTDIR}/KernelFreeRTOS/heap_1.o.d ${OBJECTDIR}/KernelFreeRTOS/port.o.d ${OBJECTDIR}/KernelFreeRTOS/portasm_dsPIC.o.d ${OBJECTDIR}/DemoMain.o.d ${OBJECTDIR}/sensor.o.d ${OBJECTDIR}/DriverPicTrainer/adc.o.d ${OBJECTDIR}/DriverPicTrainer/pwm.o.d ${OBJECTDIR}/DriverPicTrainer/pwm2.o.d ${OBJECTDIR}/DriverPicTrainer/uart.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/DriverPicTrainer/config.o ${OBJECTDIR}/KernelFreeRTOS/tasks.o ${OBJECTDIR}/KernelFreeRTOS/croutine.o ${OBJECTDIR}/KernelFreeRTOS/list.o ${OBJECTDIR}/KernelFreeRTOS/queue.o ${OBJECTDIR}/KernelFreeRTOS/timers.o ${OBJECTDIR}/KernelFreeRTOS/event_groups.o ${OBJECTDIR}/KernelFreeRTOS/heap_1.o ${OBJECTDIR}/KernelFreeRTOS/port.o ${OBJECTDIR}/KernelFreeRTOS/portasm_dsPIC.o ${OBJECTDIR}/Serie.o ${OBJECTDIR}/Entradas.o ${OBJECTDIR}/Hora.o ${OBJECTDIR}/DemoMain.o ${OBJECTDIR}/sensor.o
+OBJECTFILES=${OBJECTDIR}/DriverPicTrainer/config.o ${OBJECTDIR}/KernelFreeRTOS/tasks.o ${OBJECTDIR}/KernelFreeRTOS/croutine.o ${OBJECTDIR}/KernelFreeRTOS/list.o ${OBJECTDIR}/KernelFreeRTOS/queue.o ${OBJECTDIR}/KernelFreeRTOS/timers.o ${OBJECTDIR}/KernelFreeRTOS/event_groups.o ${OBJECTDIR}/KernelFreeRTOS/heap_1.o ${OBJECTDIR}/KernelFreeRTOS/port.o ${OBJECTDIR}/KernelFreeRTOS/portasm_dsPIC.o ${OBJECTDIR}/DemoMain.o ${OBJECTDIR}/sensor.o ${OBJECTDIR}/DriverPicTrainer/adc.o ${OBJECTDIR}/DriverPicTrainer/pwm.o ${OBJECTDIR}/DriverPicTrainer/pwm2.o ${OBJECTDIR}/DriverPicTrainer/uart.o
 
 # Source Files
-SOURCEFILES=DriverPicTrainer/config.c KernelFreeRTOS/tasks.c KernelFreeRTOS/croutine.c KernelFreeRTOS/list.c KernelFreeRTOS/queue.c KernelFreeRTOS/timers.c KernelFreeRTOS/event_groups.c KernelFreeRTOS/heap_1.c KernelFreeRTOS/port.c KernelFreeRTOS/portasm_dsPIC.S Serie.c Entradas.c Hora.c DemoMain.c sensor.c
+SOURCEFILES=DriverPicTrainer/config.c KernelFreeRTOS/tasks.c KernelFreeRTOS/croutine.c KernelFreeRTOS/list.c KernelFreeRTOS/queue.c KernelFreeRTOS/timers.c KernelFreeRTOS/event_groups.c KernelFreeRTOS/heap_1.c KernelFreeRTOS/port.c KernelFreeRTOS/portasm_dsPIC.S DemoMain.c sensor.c DriverPicTrainer/adc.c DriverPicTrainer/pwm.c DriverPicTrainer/pwm2.c DriverPicTrainer/uart.c
 
 
 CFLAGS=
@@ -157,27 +157,6 @@ ${OBJECTDIR}/KernelFreeRTOS/port.o: KernelFreeRTOS/port.c  nbproject/Makefile-${
 	${MP_CC} $(MP_EXTRA_CC_PRE)  KernelFreeRTOS/port.c  -o ${OBJECTDIR}/KernelFreeRTOS/port.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/KernelFreeRTOS/port.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -O2 -I"./" -I"KernelFreeRTOS/include" -msmart-io=1 -Wall -msfr-warn=off  
 	@${FIXDEPS} "${OBJECTDIR}/KernelFreeRTOS/port.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
-${OBJECTDIR}/Serie.o: Serie.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/Serie.o.d 
-	@${RM} ${OBJECTDIR}/Serie.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  Serie.c  -o ${OBJECTDIR}/Serie.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Serie.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -O2 -I"./" -I"KernelFreeRTOS/include" -msmart-io=1 -Wall -msfr-warn=off  
-	@${FIXDEPS} "${OBJECTDIR}/Serie.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/Entradas.o: Entradas.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/Entradas.o.d 
-	@${RM} ${OBJECTDIR}/Entradas.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  Entradas.c  -o ${OBJECTDIR}/Entradas.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Entradas.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -O2 -I"./" -I"KernelFreeRTOS/include" -msmart-io=1 -Wall -msfr-warn=off  
-	@${FIXDEPS} "${OBJECTDIR}/Entradas.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/Hora.o: Hora.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/Hora.o.d 
-	@${RM} ${OBJECTDIR}/Hora.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  Hora.c  -o ${OBJECTDIR}/Hora.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Hora.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -O2 -I"./" -I"KernelFreeRTOS/include" -msmart-io=1 -Wall -msfr-warn=off  
-	@${FIXDEPS} "${OBJECTDIR}/Hora.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
 ${OBJECTDIR}/DemoMain.o: DemoMain.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/DemoMain.o.d 
@@ -191,6 +170,34 @@ ${OBJECTDIR}/sensor.o: sensor.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/sensor.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  sensor.c  -o ${OBJECTDIR}/sensor.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/sensor.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -O2 -I"./" -I"KernelFreeRTOS/include" -msmart-io=1 -Wall -msfr-warn=off  
 	@${FIXDEPS} "${OBJECTDIR}/sensor.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/DriverPicTrainer/adc.o: DriverPicTrainer/adc.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/DriverPicTrainer" 
+	@${RM} ${OBJECTDIR}/DriverPicTrainer/adc.o.d 
+	@${RM} ${OBJECTDIR}/DriverPicTrainer/adc.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  DriverPicTrainer/adc.c  -o ${OBJECTDIR}/DriverPicTrainer/adc.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/DriverPicTrainer/adc.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -O2 -I"./" -I"KernelFreeRTOS/include" -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/DriverPicTrainer/adc.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/DriverPicTrainer/pwm.o: DriverPicTrainer/pwm.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/DriverPicTrainer" 
+	@${RM} ${OBJECTDIR}/DriverPicTrainer/pwm.o.d 
+	@${RM} ${OBJECTDIR}/DriverPicTrainer/pwm.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  DriverPicTrainer/pwm.c  -o ${OBJECTDIR}/DriverPicTrainer/pwm.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/DriverPicTrainer/pwm.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -O2 -I"./" -I"KernelFreeRTOS/include" -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/DriverPicTrainer/pwm.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/DriverPicTrainer/pwm2.o: DriverPicTrainer/pwm2.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/DriverPicTrainer" 
+	@${RM} ${OBJECTDIR}/DriverPicTrainer/pwm2.o.d 
+	@${RM} ${OBJECTDIR}/DriverPicTrainer/pwm2.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  DriverPicTrainer/pwm2.c  -o ${OBJECTDIR}/DriverPicTrainer/pwm2.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/DriverPicTrainer/pwm2.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -O2 -I"./" -I"KernelFreeRTOS/include" -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/DriverPicTrainer/pwm2.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/DriverPicTrainer/uart.o: DriverPicTrainer/uart.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/DriverPicTrainer" 
+	@${RM} ${OBJECTDIR}/DriverPicTrainer/uart.o.d 
+	@${RM} ${OBJECTDIR}/DriverPicTrainer/uart.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  DriverPicTrainer/uart.c  -o ${OBJECTDIR}/DriverPicTrainer/uart.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/DriverPicTrainer/uart.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -O2 -I"./" -I"KernelFreeRTOS/include" -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/DriverPicTrainer/uart.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 else
 ${OBJECTDIR}/DriverPicTrainer/config.o: DriverPicTrainer/config.c  nbproject/Makefile-${CND_CONF}.mk
@@ -256,27 +263,6 @@ ${OBJECTDIR}/KernelFreeRTOS/port.o: KernelFreeRTOS/port.c  nbproject/Makefile-${
 	${MP_CC} $(MP_EXTRA_CC_PRE)  KernelFreeRTOS/port.c  -o ${OBJECTDIR}/KernelFreeRTOS/port.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/KernelFreeRTOS/port.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -O2 -I"./" -I"KernelFreeRTOS/include" -msmart-io=1 -Wall -msfr-warn=off  
 	@${FIXDEPS} "${OBJECTDIR}/KernelFreeRTOS/port.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
-${OBJECTDIR}/Serie.o: Serie.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/Serie.o.d 
-	@${RM} ${OBJECTDIR}/Serie.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  Serie.c  -o ${OBJECTDIR}/Serie.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Serie.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -O2 -I"./" -I"KernelFreeRTOS/include" -msmart-io=1 -Wall -msfr-warn=off  
-	@${FIXDEPS} "${OBJECTDIR}/Serie.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/Entradas.o: Entradas.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/Entradas.o.d 
-	@${RM} ${OBJECTDIR}/Entradas.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  Entradas.c  -o ${OBJECTDIR}/Entradas.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Entradas.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -O2 -I"./" -I"KernelFreeRTOS/include" -msmart-io=1 -Wall -msfr-warn=off  
-	@${FIXDEPS} "${OBJECTDIR}/Entradas.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/Hora.o: Hora.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/Hora.o.d 
-	@${RM} ${OBJECTDIR}/Hora.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  Hora.c  -o ${OBJECTDIR}/Hora.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Hora.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -O2 -I"./" -I"KernelFreeRTOS/include" -msmart-io=1 -Wall -msfr-warn=off  
-	@${FIXDEPS} "${OBJECTDIR}/Hora.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
 ${OBJECTDIR}/DemoMain.o: DemoMain.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/DemoMain.o.d 
@@ -290,6 +276,34 @@ ${OBJECTDIR}/sensor.o: sensor.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/sensor.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  sensor.c  -o ${OBJECTDIR}/sensor.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/sensor.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -O2 -I"./" -I"KernelFreeRTOS/include" -msmart-io=1 -Wall -msfr-warn=off  
 	@${FIXDEPS} "${OBJECTDIR}/sensor.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/DriverPicTrainer/adc.o: DriverPicTrainer/adc.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/DriverPicTrainer" 
+	@${RM} ${OBJECTDIR}/DriverPicTrainer/adc.o.d 
+	@${RM} ${OBJECTDIR}/DriverPicTrainer/adc.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  DriverPicTrainer/adc.c  -o ${OBJECTDIR}/DriverPicTrainer/adc.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/DriverPicTrainer/adc.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -O2 -I"./" -I"KernelFreeRTOS/include" -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/DriverPicTrainer/adc.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/DriverPicTrainer/pwm.o: DriverPicTrainer/pwm.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/DriverPicTrainer" 
+	@${RM} ${OBJECTDIR}/DriverPicTrainer/pwm.o.d 
+	@${RM} ${OBJECTDIR}/DriverPicTrainer/pwm.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  DriverPicTrainer/pwm.c  -o ${OBJECTDIR}/DriverPicTrainer/pwm.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/DriverPicTrainer/pwm.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -O2 -I"./" -I"KernelFreeRTOS/include" -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/DriverPicTrainer/pwm.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/DriverPicTrainer/pwm2.o: DriverPicTrainer/pwm2.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/DriverPicTrainer" 
+	@${RM} ${OBJECTDIR}/DriverPicTrainer/pwm2.o.d 
+	@${RM} ${OBJECTDIR}/DriverPicTrainer/pwm2.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  DriverPicTrainer/pwm2.c  -o ${OBJECTDIR}/DriverPicTrainer/pwm2.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/DriverPicTrainer/pwm2.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -O2 -I"./" -I"KernelFreeRTOS/include" -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/DriverPicTrainer/pwm2.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/DriverPicTrainer/uart.o: DriverPicTrainer/uart.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/DriverPicTrainer" 
+	@${RM} ${OBJECTDIR}/DriverPicTrainer/uart.o.d 
+	@${RM} ${OBJECTDIR}/DriverPicTrainer/uart.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  DriverPicTrainer/uart.c  -o ${OBJECTDIR}/DriverPicTrainer/uart.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/DriverPicTrainer/uart.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -O2 -I"./" -I"KernelFreeRTOS/include" -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/DriverPicTrainer/uart.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 endif
 

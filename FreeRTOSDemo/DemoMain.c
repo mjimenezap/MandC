@@ -31,15 +31,12 @@
 #define PIN_ADC_2 1
 #define FRECUENCIA 50
 #define PIN_PWM (1<<15)//PIN RB15
+//UART 
 #define BAUD_RATE 115200
 #define TAM_TR_UART 250
 #define TAM_REC_UART 250
 #define PR_INT_TX 5
 
-// Activación y desactivación de interrupciones
-#define Enable() SET_CPU_IPL(0)
-#define Disable() SET_CPU_IPL(7)
- 
 // Márgenes, umbrales y constantes del control
 #define REF 0
 #define UMBRAL_DORMIR 50
@@ -52,9 +49,12 @@
 #define KINTEG 2
 #define TS_CONTROL 0.001
 
+
+
+
 // Prioridad de las tareas
-#define BUCLE_SCAN_PRIO (tskIDLE_PRIORITY + 1)
-#define PRIO_CONTROL (tskIDLE_PRIORITY + 2)
+//#define BUCLE_SCAN_PRIO (tskIDLE_PRIORITY + 1)
+#define PRIO_CONTROL (tskIDLE_PRIORITY + 1)
 
 
 
@@ -109,31 +109,24 @@ Preguntas para Miguel:
 static SemaphoreHandle_t sem_TareaControl; //Para iniciar el cálculo del control una
 //vez se han leído los ADC
 
-
-//Variables globales
-static unsigned int ContadorTimeoutSleep = 0;
-
-// Prototipos de funciones internas
-void __attribute__((__interrupt__,no_auto_psv)) _INT0Interrupt(void);
-void __attribute__((__interrupt__, __auto_psv__)) _T2Interrupt(void);
-
 // Prototipos funciones propias
 void vApplicationIdleHook(void); //En esta función se va a poner el código para 
 void InitTimer2(void);
 void InitHardware(void);
 
+void AplicarControl(void *pvParameters);
 
 //Interrupciones
 /*
 * INT0
 * Interrupción para despertar al sistema del estado de reposo/sleep
 */
-void __attribute__((__interrupt__,no_auto_psv)) _INT0Interrupt(void){
+void __attribute__((interrupt(no_auto_psv) )) _INT0Interrupt(void){
       
     //Despierta el sistema (esto lo hace tanto esta interrupción como la del Timer 1 (el del sistema operativo)))
     
-    //Activación del Timer 2
-    T2CONbits.TON = 1;
+    //Activación de interrupciones de timer2
+    IEC0bits.T2IE = 1;
     
     IFS0bits.INT0IF = 0;    //Clear the INT0 interrupt flag     
     return;
@@ -144,19 +137,19 @@ void __attribute__((__interrupt__,no_auto_psv)) _INT0Interrupt(void){
 * Interrupción cada tick del timer 2
 * Permite hacer el control digital y timeout para poner en reposo al sistema
 */
-void __attribute__((__interrupt__, __auto_psv__)) _T2Interrupt(void){
-
-    // Actualizo contador
-    ContadorTimeoutSleep = 0;
-
+void __attribute__((interrupt(no_auto_psv) )) _T2Interrupt(void){
+    
+    BaseType_t xTaskWoken = pdFALSE;
+    
     //Dar semáforo a TareaControl
-    xSemaphoreGivefromISR(sem_TareaControl);
+    xSemaphoreGiveFromISR(sem_TareaControl, &xTaskWoken);
 
-    taskYIELD(); // Se fuerza el cambio de contexto
-
-    //Cogemos el semáforo para bloquear las otras tareas mientras no haya diferencia de luz
-    xSemaphoreTakefromISR(sem_TareaControl);
-
+    if(xTaskWoken == pdTRUE){
+        taskYIELD (); /* Si el semÅforo ha despertado
+                        una tarea, se fuerza un cambio
+                        de contexto */
+    }
+    
     IFS0bits.T2IF = 0;    //Clear the Timer 2 interrupt flag     
     return;
 }
@@ -171,17 +164,14 @@ int main(void)
 
     // Inicializaciones
     vSemaphoreCreateBinary(sem_TareaControl);
-    ContadorTimeoutSleep = UMBRAL_DORMIR;
-    
-    // Cogemos de primeras el semáforo de la tarea control
-    xSemaphoreTake(sem_TareaControl);
+ 
 
     // Se crean las tareas
-    xTaskCreate(BucleScan,
+    /*xTaskCreate(BucleScan,
     (const signed portCHAR * const) "BucScan",
               BUCLE_SCAN_STACK_SIZE, NULL, BUCLE_SCAN_PRIO,
               (xTaskHandle * ) NULL ); // No entiendo esta tarea
-
+    */
     xTaskCreate(AplicarControl, "AplCtrl", TAM_PILA, NULL,
                 PRIO_CONTROL, NULL);
      
@@ -190,7 +180,7 @@ int main(void)
                            
     return 0; 
 }
-
+/*
 
 void BucleScan(void *pvParameters){ // Tarea principal
     // Declaracion de variables
@@ -210,7 +200,7 @@ void BucleScan(void *pvParameters){ // Tarea principal
     return; // Nunca se llega aquí
 }
 
-
+*/
 void AplicarControl(void *pvParameters){ // Aplica control PI hasta alcanzar regimen permanente
     // Definición de variables
     static int cont;
@@ -219,6 +209,10 @@ void AplicarControl(void *pvParameters){ // Aplica control PI hasta alcanzar reg
     int lectura;
     float prop, mando;
     float integ = 0;
+    
+    //For debugging
+    char str[80];
+    int contador = 0;
 
     while(1){
         if(xSemaphoreTake(sem_TareaControl, (TickType_t) 1000)== pdTRUE ){
@@ -231,7 +225,8 @@ void AplicarControl(void *pvParameters){ // Aplica control PI hasta alcanzar reg
 
             // Calculamos la entrada para el control (diferencia de luxes y aplicamos control)
             lectura = luxes1-luxes2;
-
+           
+            
             // La referencia es 0, por lo que el control debe conseguir que dicha lectura se haga 
             // en las siguientes iteraciones. La propia lectura se considera el error.
             prop = KPROP * (float)lectura;
@@ -239,7 +234,12 @@ void AplicarControl(void *pvParameters){ // Aplica control PI hasta alcanzar reg
 
             // Cálculo de mando
             mando = prop + KINTEG * integ;
-
+            
+            if(contador == 100){
+                sprintf(str,"Luxes 1 , 2: %d, %d Mando: %d;\n", luxes1,luxes2,mando);
+                putsUART(str);
+                contador = 0;
+            }
             // Anti-Windup
             if (mando > MANDO_MAX) { 
                 mando = MANDO_MAX;
@@ -251,7 +251,7 @@ void AplicarControl(void *pvParameters){ // Aplica control PI hasta alcanzar reg
             }
 
             // Actuación sobre motor
-            setDcPWM(PIN_PWM, 100*mando);;
+            setDcPWM(PIN_PWM, 100*mando);
 
 
             // Comprobar si la tarea de control ha finalizado
@@ -260,13 +260,15 @@ void AplicarControl(void *pvParameters){ // Aplica control PI hasta alcanzar reg
                 if (cont == UMBRAL_REGPERM){
                     cont = 0;
                     integ = 0;
-                    //xSemaphoreGive(sem_TareaControl);
+                    
 
                 }
 
             }else{
                 cont = 0;
             }
+            
+            contador ++; //debug
         }
     }
     
@@ -284,7 +286,7 @@ void InitTimer2(void){
     PR2 =5000*1000*TS_CONTROL;// 1 ms con TS_CONTROL=0.001
     IPC1bits.T2IP = 0x02; // Set Timer 1 Interrupt Priority Level(priority less than timer 1 )
     IFS0bits.T2IF = 0; // Clear Timer 1 Interrupt Flag
-    IEC0bits.T2IE = 1; // Enable Timer1 interrupt
+    IEC0bits.T2IE = 1; // Disable Timer1 interrupt
     T2CONbits.TON = 1; // Start Timer
 
     return;
@@ -296,11 +298,10 @@ activa el modo sleep del micro. Este dormirá hasta que salte la interrupcion IN
 para permanecer dormido, es importante desactivar las interrupciones del timer2.
 */
 void vApplicationIdleHook(void){
-    //Apagar Timer 2 
-    T2CONbits.TON = 0;
+    //Apagar Interrupciones 
+    IEC0bits.T2IE = 0;
 
     // Activamos el modo sueño
-    RCONbits.LVREN = 1 ;
     Sleep();
 }
 

@@ -12,7 +12,7 @@
  */
 
 #include "sensor.h" 
-#include "adc.h" 
+#include "DriverPicTrainer/adc.h"
 
 
 #define N_MUESTRAS 17
