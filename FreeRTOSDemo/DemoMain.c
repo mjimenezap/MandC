@@ -39,14 +39,13 @@
 
 // Márgenes, umbrales y constantes del control
 #define REF 0
+#define NUM_MEDIDAS 16
 #define UMBRAL_DORMIR 50
 #define UMBRAL_REGPERM 100 //ms
-#define MARGEN_REFPERM 5 // Luxes
-#define MANDO_MAX 100
-#define MANDO_MIN 0
+#define MARGEN_REFPERM 10 // Luxes
+#define MANDO_MAX 1050
+#define MANDO_MIN 150
 
-#define KPROP 2
-#define KINTEG 2
 #define TS_CONTROL 0.001
 
 
@@ -209,6 +208,9 @@ void AplicarControl(void *pvParameters){ // Aplica control PI hasta alcanzar reg
     int lectura;
     float prop, mando;
     float integ = 0;
+    float kprop = 0.8; //kprop = 0.8;
+    float kinteg = 400 ; //kinteg = 611.16;
+    float lectura_robusta = 0;
     
     //For debugging
     char str[80];
@@ -229,11 +231,11 @@ void AplicarControl(void *pvParameters){ // Aplica control PI hasta alcanzar reg
             
             // La referencia es 0, por lo que el control debe conseguir que dicha lectura se haga 
             // en las siguientes iteraciones. La propia lectura se considera el error.
-            prop = KPROP * (float)lectura;
+            prop = kprop * (float)lectura;
             integ += (float)lectura * TS_CONTROL; 
 
             // Cálculo de mando
-            mando = prop + KINTEG * integ;
+            mando = prop + kinteg * integ;
             
             if(contador == 100){
                 sprintf(str,"Luxes 1 , 2: %d, %d Mando: %d;\n", luxes1,luxes2,mando);
@@ -251,10 +253,10 @@ void AplicarControl(void *pvParameters){ // Aplica control PI hasta alcanzar reg
             }
 
             // Actuación sobre motor
-            setDcPWM(PIN_PWM, 100*mando);
+            setDcPWM(PIN_PWM, mando);
 
 
-            // Comprobar si la tarea de control ha finalizado
+            // Comprobar si la tarea de control ha finalizado HAY QUE MEJORAR ESTO PARA ESTABILIZARLO
             if (lectura < REF + MARGEN_REFPERM && lectura > REF - MARGEN_REFPERM){
                 cont++;
                 if (cont == UMBRAL_REGPERM){
