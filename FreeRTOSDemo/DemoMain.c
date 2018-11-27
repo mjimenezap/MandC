@@ -42,7 +42,7 @@
 #define NUM_MEDIDAS 16
 #define UMBRAL_DORMIR 50
 #define UMBRAL_REGPERM 500 //ms
-#define MARGEN_REFPERM 10 // Luxes
+#define MARGEN_REFPERM 100 // Luxes  //10
 #define MANDO_MAX 1050
 #define MANDO_MIN 150
 
@@ -208,8 +208,8 @@ void AplicarControl(void *pvParameters){ // Aplica control PI hasta alcanzar reg
     int lectura;
     float prop, mando;
     float integ = 0;
-    float kprop = 0.8; //kprop = 0.8;
-    float kinteg = 400 ; //kinteg = 611.16;
+    float kprop = 8; //kprop = 0.8;
+    float kinteg = 800 ; //kinteg = 611.16; 400
     float lectura_robusta = 0;
     int reg_permanente = 0; // flag para comprobar si estamos en regimen permanente
     
