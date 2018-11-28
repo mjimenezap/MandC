@@ -29,8 +29,12 @@
 
 #define PIN_ADC_1 0
 #define PIN_ADC_2 1
+#define PIN_ADC_5 4
+#define PIN_ADC_6 5
+
 #define FRECUENCIA 50
-#define PIN_PWM (1<<15)//PIN RB15
+#define PIN_PWM1 (1<<15)//PIN RB15
+#define PIN_PWM2 (1<<16)//PIN RB16
 //UART 
 #define BAUD_RATE 115200
 #define TAM_TR_UART 250
@@ -64,7 +68,7 @@
  * BucleScan con la prioridad más baja. Pone a dormir el micro tras alacanzar el timeout especificado para el timer
  * Inicio con semaforo
  *
- * La forma de salir de esta tarea es mediante la interrupción (proporcionada por hardware) ante un cambio en
+ * La forma de salir de esta tarea es mediante la interrupción (prop1orcionada por hardware) ante un cambio en
  * de iluminosidad. Asignamos una ISR a esta interrupción, que se encargará de:
  *      - Deshabilitar la flag de interrupción.
  *      - Meter dato en cola, para que comience la tarea del control. 
@@ -108,7 +112,7 @@ Preguntas para Miguel:
 static SemaphoreHandle_t sem_TareaControl; //Para iniciar el cálculo del control una
 //vez se han leído los ADC
 
-// Prototipos funciones propias
+// Prototipos funciones prop1ias
 void vApplicationIdleHook(void); //En esta función se va a poner el código para 
 void InitTimer2(void);
 void InitHardware(void);
@@ -202,17 +206,20 @@ void BucleScan(void *pvParameters){ // Tarea principal
 */
 void AplicarControl(void *pvParameters){ // Aplica control PI hasta alcanzar regimen permanente
     // Definición de variables
-    static int cont;
-    static unsigned int luxes1;
-    static unsigned int luxes2;
-    int lectura;
-    float prop, mando;
-    float integ = 0;
-    float kprop = 8; //kprop = 0.8;
-    float kinteg = 800 ; //kinteg = 611.16; 400
-    float lectura_robusta = 0;
-    int reg_permanente = 0; // flag para comprobar si estamos en regimen permanente
-    
+    static int cont1,cont2;
+    static unsigned int luxes1,luxes2,luxes3,luxes4;
+    int lectura1,lectura2;
+    float prop1, mando1;
+    float prop2, mando2;
+    float integ1 = 0;
+    float integ2 = 0;
+    float kprop1 = 8; //kprop1 = 0.8;
+    float kinteg1 = 800 ; //kinteg1 = 611.16; 400
+    float kprop2 = 8; 
+    float kinteg2 = 800 ; 
+    int reg_permanente1 = 0; // flag para comprobar si estamos en regimen permanente
+    int reg_permanente2 = 0;
+
     //For debugging
     char str[80];
     int contador = 0;
@@ -224,55 +231,95 @@ void AplicarControl(void *pvParameters){ // Aplica control PI hasta alcanzar reg
             Disable();
             luxes2 = 2*LeerLuxes(PIN_ADC_2);
             luxes1 = LeerLuxes(PIN_ADC_1);
+            luxes3 = LeerLuxes(PIN_ADC_5);
+            luxes4 = LeerLuxes(PIN_ADC_6);
             Enable();
 
             // Calculamos la entrada para el control (diferencia de luxes y aplicamos control)
-            lectura = luxes1-luxes2;
+            lectura1 = luxes1-luxes2;
+            lectura2 = luxes3-luxes4;
            
-            if (lectura < REF + MARGEN_REFPERM && lectura > REF - MARGEN_REFPERM){
-                cont++;
-                if(cont==UMBRAL_REGPERM){
-                    reg_permanente = 1;
+            // Regimen permanente en el control de cabeceo 
+            if (lectura1 < REF + MARGEN_REFPERM && lectura1 > REF - MARGEN_REFPERM){
+                cont1++;
+                if(cont1==UMBRAL_REGPERM){
+                    reg_permanente1 = 1;
+                    cont1=0;
                 }
 
             }else{
-                cont = 0;
-                reg_permanente = 0;
+                cont1 = 0;
+                reg_permanente1 = 0;
+            }
+            
+            // Regimen permanente en el control de giro base
+            if (lectura2 < REF + MARGEN_REFPERM && lectura2 > REF - MARGEN_REFPERM){
+                cont2++;
+                if(cont2==UMBRAL_REGPERM){
+                    reg_permanente2 = 1;
+                    cont2=0;
+                }
+
+            }else{
+                cont2 = 0;
+                reg_permanente2 = 0;
             }
             
 
-            if(!reg_permanente){
+            if(!reg_permanente1){
 
                 // La referencia es 0, por lo que el control debe conseguir que dicha lectura se haga 
-                // en las siguientes iteraciones. La propia lectura se considera el error.
-                prop = kprop * (float)lectura;
-                integ += (float)lectura * TS_CONTROL; 
+                // en las siguientes iteraciones. La prop1ia lectura se considera el error.
+                prop1 = kprop11 * (float)lectura1;
+                integ1 += (float)lectura1 * TS_CONTROL; 
 
-                // Cálculo de mando
-                mando = prop + kinteg * integ;
+                // Cálculo de mando1
+                mando1 = prop1 + kinteg1 * integ1;
                 
                 if(contador == 100){
-                    sprintf(str,"Luxes 1 , 2: %d, %d Mando: %d;\n", luxes1,luxes2,mando);
+                    sprintf(str,"Luxes 1, 2: %d, %d mando1: %d;\n", luxes1,luxes2,mando1);
                     putsUART(str);
                     contador = 0;
                 }
                 // Anti-Windup
-                if (mando > MANDO_MAX) { 
-                    mando = MANDO_MAX;
-                    integ -= (float)lectura * TS_CONTROL;
+                if (mando1 > MANDO_MAX) { 
+                    mando1 = MANDO_MAX;
+                    integ1 -= (float)lectura1 * TS_CONTROL;
 
-                }else if (mando < MANDO_MIN) {
-                    mando = MANDO_MIN;
-                    integ -= (float)lectura * TS_CONTROL;
+                }else if (mando1 < MANDO_MIN) {
+                    mando1 = MANDO_MIN;
+                    integ1 -= (float)lectura1 * TS_CONTROL;
                 }
 
                 // Actuación sobre motor
-                setDcPWM(PIN_PWM, mando);
+                setDcPWM(PIN_PWM1, mando1);
 
-            }else{
-                // Poner un semaforo que bloque el control si la lectura es proxima a REF +- el margen.
-                if(xSemaphoreTake(sem_TareaControl, (TickType_t) 1000)== pdTRUE ){
-                    cont--;
+            }else if (!reg_permanente2){
+                // Control del giro base
+
+                prop2 = kprop2 * (float)lectura2;
+                integ2 += (float)lectura2 * TS_CONTROL; 
+
+                // Cálculo de mando1
+                mando2 = prop2 + kinteg2 * integ2;
+                
+                if(contador == 100){
+                    sprintf(str,"Luxes 3 , 4: %d, %d mando2: %d;\n", luxes3,luxes4,mando2);
+                    putsUART(str);
+                    contador = 0;
+                }
+                // Anti-Windup
+                if (mando2 > MANDO_MAX) { 
+                    mando2 = MANDO_MAX;
+                    integ2 -= (float)lectura2 * TS_CONTROL;
+
+                }else if (mando2 < MANDO_MIN) {
+                    mando2 = MANDO_MIN;
+                    integ2 -= (float)lectura2 * TS_CONTROL;
+                }
+
+                // Actuación sobre motor
+                setDcPWM(PIN_PWM2, mando2);
                 }
             }
             
@@ -315,10 +362,10 @@ void vApplicationIdleHook(void){
 }
 
 void InitHardware(void){
-    inicializarADCPolling(1<<PIN_ADC_1 | 1<<PIN_ADC_2);
+    inicializarADCPolling(1<<PIN_ADC_1 | 1<<PIN_ADC_2 | 1<<PIN_ADC_5 | 1<<PIN_ADC_6);    
     InicializarReloj();
-    inicializarPWM(PIN_PWM, FRECUENCIA);
-    activarPWM(PIN_PWM);
+    inicializarPWM(PIN_PWM1 | PIN_PWM2, FRECUENCIA);
+    activarPWM(PIN_PWM1 | PIN_PWM2);
     setFrecuencia(FRECUENCIA);
     inicializarUART(BAUD_RATE);
     InitTimer2();
