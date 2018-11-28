@@ -133,11 +133,11 @@ section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x200               0xe62          0x1593  (5523)
 .const                      0x1062                0x18            0x24  (36)
-.text                       0x107a               0x798           0xb64  (2916)
-.dinit                      0x1812                0x78            0xb4  (180)
-.text                       0x188a                0x9e            0xed  (237)
+.text                       0x107a               0x7a0           0xb70  (2928)
+.dinit                      0x181a                0x78            0xb4  (180)
+.text                       0x1892                0x9e            0xed  (237)
 
-                 Total program memory used (bytes):         0x22bc  (8892) 6%
+                 Total program memory used (bytes):         0x22c8  (8904) 6%
 
 
 Ivt Memory  [Origin = 0x4, Length = 0xfc]
@@ -227,26 +227,26 @@ External Symbols in Program Memory (by address):
                   0x0014fe                  _ponerEnColaTransmisionUART
                   0x001540                  _transmitirUART
                   0x00154a                  _main
-                  0x001600                  _Ensayo
-                  0x001624                  _InitDevices
-                  0x00164e                  _inicializarTareaIdle
-                  0x001720                  _tareaIdle
-                  0x001732                  _InterpolarSensor
-                  0x0017f4                  _LeerADC
-                  0x001800                  _LeerLuxes
-                  0x00188a                  _inicializarReloj
-                  0x0018de                  _inicializarADCPolling
-                  0x00190a                  _leerADCPolling
+                  0x0015fc                  _Ensayo
+                  0x00162c                  _InitDevices
+                  0x001656                  _inicializarTareaIdle
+                  0x001728                  _tareaIdle
+                  0x00173a                  _InterpolarSensor
+                  0x0017fc                  _LeerADC
+                  0x001808                  _LeerLuxes
+                  0x001892                  _inicializarReloj
+                  0x0018e6                  _inicializarADCPolling
+                  0x001912                  _leerADCPolling
                   0xf80000                  __FBS.sec
                   0xf80004                  __FGS.sec
 
 External Symbols in Program Memory (by name):
 
-                  0x001600                  _Ensayo
-                  0x001624                  _InitDevices
-                  0x001732                  _InterpolarSensor
-                  0x0017f4                  _LeerADC
-                  0x001800                  _LeerLuxes
+                  0x0015fc                  _Ensayo
+                  0x00162c                  _InitDevices
+                  0x00173a                  _InterpolarSensor
+                  0x0017fc                  _LeerADC
+                  0x001808                  _LeerLuxes
                   0x000348                  __DefaultInterrupt
                   0xf80000                  __FBS.sec
                   0xf80004                  __FGS.sec
@@ -290,13 +290,13 @@ External Symbols in Program Memory (by name):
                   0x001238                  _desactivarPWM
                   0x0013d8                  _desactivarPWM2
                   0x0014d0                  _getcharUART
-                  0x0018de                  _inicializarADCPolling
+                  0x0018e6                  _inicializarADCPolling
                   0x00107a                  _inicializarPWM
                   0x0012a6                  _inicializarPWM2
-                  0x00188a                  _inicializarReloj
-                  0x00164e                  _inicializarTareaIdle
+                  0x001892                  _inicializarReloj
+                  0x001656                  _inicializarTareaIdle
                   0x001400                  _inicializarUART
-                  0x00190a                  _leerADCPolling
+                  0x001912                  _leerADCPolling
                   0x00154a                  _main
                   0x000834                  _memcpy
                   0x0014fe                  _ponerEnColaTransmisionUART
@@ -307,7 +307,7 @@ External Symbols in Program Memory (by name):
                   0x0010ee                  _setFrecuencia
                   0x0012f0                  _setFrecuencia2
                   0x000842                  _strchr
-                  0x001720                  _tareaIdle
+                  0x001728                  _tareaIdle
                   0x001540                  _transmitirUART
                   0x0006a4                  sprintf_cdnopuxX.XXeo:_prout
 
@@ -554,16 +554,16 @@ __FUID3
  .debug_abbrev    0x0004e7         0x7f build/default/production/sensor.o
  .debug_abbrev    0x000566        0x12e build/default/production/uart.o
 
-.debug_line       0x000000        0x742
+.debug_line       0x000000        0x741
  *(.debug_line)
- .debug_line      0x000000         0x65 build/default/production/main.o
- .debug_line      0x000065         0xf5 build/default/production/adc.o
- .debug_line      0x00015a         0xf4 build/default/production/config.o
- .debug_line      0x00024e        0x104 build/default/production/idle.o
- .debug_line      0x000352        0x135 build/default/production/pwm.o
- .debug_line      0x000487        0x11c build/default/production/pwm2.o
- .debug_line      0x0005a3         0x50 build/default/production/sensor.o
- .debug_line      0x0005f3        0x14f build/default/production/uart.o
+ .debug_line      0x000000         0x64 build/default/production/main.o
+ .debug_line      0x000064         0xf5 build/default/production/adc.o
+ .debug_line      0x000159         0xf4 build/default/production/config.o
+ .debug_line      0x00024d        0x104 build/default/production/idle.o
+ .debug_line      0x000351        0x135 build/default/production/pwm.o
+ .debug_line      0x000486        0x11c build/default/production/pwm2.o
+ .debug_line      0x0005a2         0x50 build/default/production/sensor.o
+ .debug_line      0x0005f2        0x14f build/default/production/uart.o
 
 .debug_frame      0x000000        0x410
  *(.debug_frame)
@@ -1854,7 +1854,7 @@ __c30_signature
 .const              0x9062         0x18 load address 0x001062  
  .const             0x9062         0x18 build/default/production/main.o
 
-.text             0x00107a        0x798
+.text             0x00107a        0x7a0
  .text            0x00107a        0x22c build/default/production/pwm.o
                   0x00107a                  _inicializarPWM
                   0x0010ee                  _setFrecuencia
@@ -1874,24 +1874,24 @@ __c30_signature
                   0x0014d0                  _getcharUART
                   0x0014fe                  _ponerEnColaTransmisionUART
                   0x001540                  _transmitirUART
- .text            0x00154a        0x104 build/default/production/main.o
+ .text            0x00154a        0x10c build/default/production/main.o
                   0x00154a                  _main
-                  0x001600                  _Ensayo
-                  0x001624                  _InitDevices
- .text            0x00164e         0xe4 build/default/production/idle.o
-                  0x00164e                  _inicializarTareaIdle
-                  0x001720                  _tareaIdle
- .text            0x001732         0xe0 build/default/production/sensor.o
-                  0x001732                  _InterpolarSensor
-                  0x0017f4                  _LeerADC
-                  0x001800                  _LeerLuxes
+                  0x0015fc                  _Ensayo
+                  0x00162c                  _InitDevices
+ .text            0x001656         0xe4 build/default/production/idle.o
+                  0x001656                  _inicializarTareaIdle
+                  0x001728                  _tareaIdle
+ .text            0x00173a         0xe0 build/default/production/sensor.o
+                  0x00173a                  _InterpolarSensor
+                  0x0017fc                  _LeerADC
+                  0x001808                  _LeerLuxes
 
-.dinit            0x001812         0x78
- .dinit           0x001812         0x78 data_init
+.dinit            0x00181a         0x78
+ .dinit           0x00181a         0x78 data_init
 
-.text             0x00188a         0x9e
- .text            0x00188a         0x54 build/default/production/config.o
-                  0x00188a                  _inicializarReloj
- .text            0x0018de         0x4a build/default/production/adc.o
-                  0x0018de                  _inicializarADCPolling
-                  0x00190a                  _leerADCPolling
+.text             0x001892         0x9e
+ .text            0x001892         0x54 build/default/production/config.o
+                  0x001892                  _inicializarReloj
+ .text            0x0018e6         0x4a build/default/production/adc.o
+                  0x0018e6                  _inicializarADCPolling
+                  0x001912                  _leerADCPolling
