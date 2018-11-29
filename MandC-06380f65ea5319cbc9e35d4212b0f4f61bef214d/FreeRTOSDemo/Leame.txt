@@ -1,0 +1,15 @@
+En esta carpeta se encuentra una demo de FreeRTOS para dsPIC33. En concreto la demo está diseñada para el dsPIC33FJ128MC802. La demo implementa dos de los ejemplos vistos en teoría: el ejemplo en el que una tarea envía la hora por el puerto serie y otra envía el estado de las entradas. El acceso al puerto serie por ambas tareas se controla mediante un semáforo. Por otro lado se ha implantado también el ejemplo en el que se comunica la interrupción de recepción del puerto serie con una tarea que procesa los mensajes que llegan por dicho puerto serie. El proceso de dichos mensajes se limita a visualizar en los LEDs de la placa el valor de los 4 bits menos significativos del primer carácter del mensaje recibido.
+
+El sistema está formado por tres módulos y del programa principal:
+
+* Serie: incluye el software del manejo del puerto serie. El interfaz con la UART se realiza mediante interrupciones y la comunicación entre las rutinas de interrupción y las tareas se realiza mediante dos colas, una para recibir y una para enviar. El módulo consta de la función putsUART() para enviar una cadena a la cola de envío (cola_env), que posteriormente se enviará por la rutina de interrupción a la UART. Por otro lado el módulo consta de la tarea ProcesaRecSerie() que retira los caracteres de la cola de recepción (cola_rec) y cuando llega el mensaje completo (\n) lo procesa. El proceso, tal como se ha dicho antes, se limita a visualizar los 4 bits menos significativos del primer carácter recibido.
+
+* Hora: incluye la tarea encargada de enviar la hora por el puerto serie, la cual está sincronizada por la interrupción del timer 2.
+
+* Entradas: incluye la tarea encargada de enviar el estado de las entradas por el puerto serie.
+
+* DemoMain: contiene el main() con la inicialización del sistema.
+
+Además de estos módulos, el proyecto incluye la carpeta KernelFreeRTOS con los archivos del kernel del RTOS y el archivo config.c con la inicialización del reloj.
+
+Este proyecto se puede usar como base de futuros desarrollos usando FreeRTOS con el dsPIC33. Basta con eliminar los módulos de la demo e incluir los módulos que necesite la nueva aplicación; manteniendo las carpetas KernelFreeRTOS y DriverPicTrainer intactas.
