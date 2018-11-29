@@ -17,8 +17,8 @@
 
 #define PIN_ADC_1 0
 #define PIN_ADC_2 1
-#define PIN_ADC_3 2
-#define PIN_ADC_4 3
+#define PIN_ADC_3 4
+#define PIN_ADC_4 5
 //#define TS 1 //1 décima de milisegundo => 0.1 ms
 #define TS 10 //10 décimas de milisegundo => 1 ms
 #define BAUD_RATE 115200
@@ -57,31 +57,31 @@ void main(void) {
     while(1){
         
 
-        //if((contador >= 1800) && (contador <= 2000)){ //Primera parte entre 1.8 y 2 seg PARA 0.1 ms
-        if((contador >= 200) && (contador <= 500)){ //Primera parte entre 1.8 y 2 seg PARA 1 ms //180,200
+        if((contador >= 1000) && (contador <= 2000)){ //Primera parte entre 1 y 2 seg PARA 0.1 ms
+        //if((contador >= 200) && (contador <= 500)){ //Primera parte entre 1.8 y 2 seg PARA 1 ms //180,200
             luxes1 = LeerLuxes(PIN_ADC_3); //LeerLuxes(PIN_ADC_1);
             luxes2 = LeerLuxes(PIN_ADC_4);// 2*LeerLuxes(PIN_ADC_2)
-            //debug1++;
-           // if(debug1==5){       // ==5 hallado de forma empírica
-                sprintf(str,"45,%d, %d;\n", luxes1,luxes2);
+            debug1++;
+            if(debug1==5){       // ==5 hallado de forma empírica
+                // sprintf(str,"45,%d, %d;\n", luxes1,luxes2);
                 luxes = LeerLuxes(PIN_ADC_3)-LeerLuxes(PIN_ADC_4);//LeerLuxes(PIN_ADC_1)-LeerLuxes(PIN_ADC_2);
-                //sprintf(str,"45, %d;\n", luxes);
+                sprintf(str,"45, %d;\n", luxes);
                 putsUART(str);
                 debug1=0;
-            //}
+            }
 
-        //} else if ((contador >= 2000) && (contador <= 2200)){ // Segunda parte entre 2 y 2.2 seg PARA 0.1 ms
-        } else if ((contador >= 500) && (contador <= 800)){ // Segunda parte entre 2 y 2.2 seg PARA 1 ms //200,220
+        } else if ((contador >= 2000) && (contador <= 3000)){ // Segunda parte entre 2 y 3 seg PARA 0.1 ms
+        //} else if ((contador >= 500) && (contador <= 800)){ // Segunda parte entre 2 y 2.2 seg PARA 1 ms //200,220
             luxes1 = LeerLuxes(PIN_ADC_3); //LeerLuxes(PIN_ADC_1);
             luxes2 = LeerLuxes(PIN_ADC_4);// 2*LeerLuxes(PIN_ADC_2)
-            //debug2++;
-            //if(debug2==5){
-                sprintf(str,"90,%d, %d;\n", luxes1,luxes2);
+            debug2++;
+            if(debug2==5){
+                //sprintf(str,"135,%d, %d;\n", luxes1,luxes2);
                 luxes = LeerLuxes(PIN_ADC_3)-LeerLuxes(PIN_ADC_4);//LeerLuxes(PIN_ADC_1)-LeerLuxes(PIN_ADC_2);
-                //sprintf(str,"135, %d;\n", luxes);
+                sprintf(str,"135, %d;\n", luxes);
                 putsUART(str);
                 debug2=0;
-            //}
+            }
         }
         
         /*debug++;
@@ -94,7 +94,7 @@ void main(void) {
         Ensayo(contador);
         contador = contador +1;
         //if (contador == 4000){ //PARA 0.1 ms
-        if (contador == 1000){ //PARA 1 ms //400
+        if (contador == 4000){ //PARA 1 ms //400
             contador = 0;
         }
         tareaIdle();
@@ -113,13 +113,13 @@ void Ensayo(int i){
                 setDcPWM(PIN_PWM, Mando45);
                 break;
                 
-            //case 2000: //PARA 0.1 ms
-            case 500: //200
+            case 2000: //PARA 0.1 ms
+            //case 500: //200
                setDcPWM(PIN_PWM, Mando135);
                 break;
                 
-            //case 4000: // Cada 4 segundos repetimos el ensayo PARA 0.1 ms
-            case 1000: // Cada 4 segundos repetimos el ensayo PARA 1 ms    //400
+            case 4000: // Cada 4 segundos repetimos el ensayo PARA 0.1 ms
+            //case 1000: // Cada 4 segundos repetimos el ensayo PARA 1 ms    //400
                 i = 0;
                 break;
             default:

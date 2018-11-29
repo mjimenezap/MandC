@@ -34,7 +34,7 @@
 
 #define FRECUENCIA 50
 #define PIN_PWM1 (1<<15)//PIN RB15
-#define PIN_PWM2 (1<<10)//PIN RB10
+#define PIN_PWM2 (1<<13)//PIN RB10
 //UART 
 #define BAUD_RATE 115200
 #define TAM_TR_UART 250
@@ -215,14 +215,15 @@ void AplicarControl(void *pvParameters){ // Aplica control PI hasta alcanzar reg
     float integ2 = 0;
     float kprop1 = 8; //kprop1 = 0.8;
     float kinteg1 = 800 ; //kinteg1 = 611.16; 400
-    float kprop2 = 8; 
-    float kinteg2 = 800 ; 
+    float kprop2 = -3.59; 
+    float kinteg2 = -137.3 ; 
     int reg_permanente1 = 0; // flag para comprobar si estamos en regimen permanente
     int reg_permanente2 = 0;
 
     //For debugging
     char str[80];
-    int contador = 0;
+    int contador1 = 0;
+    int contador2 = 0;
 
     while(1){
         if(xSemaphoreTake(sem_TareaControl, (TickType_t) 1000)== pdTRUE ){
@@ -276,10 +277,10 @@ void AplicarControl(void *pvParameters){ // Aplica control PI hasta alcanzar reg
                 // CÃ¡lculo de mando1
                 mando1 = prop1 + kinteg1 * integ1;
                 
-                if(contador == 100){
+                if(contador1 == 800){
                     sprintf(str,"Luxes 1, 2: %d, %d mando1: %d;\n", luxes1,luxes2,mando1);
                     putsUART(str);
-                    contador = 0;
+                    contador1 = 0;
                 }
                 // Anti-Windup
                 if (mando1 > MANDO_MAX) { 
@@ -294,7 +295,10 @@ void AplicarControl(void *pvParameters){ // Aplica control PI hasta alcanzar reg
                 // ActuaciÃ³n sobre motor
                 setDcPWM(PIN_PWM1, mando1);
 
-            }else if (!reg_permanente2){
+            }
+            
+            //if(1){
+                if (!reg_permanente2){
                 // Control del giro base
 
                 prop2 = kprop2 * (float)lectura2;
@@ -303,10 +307,10 @@ void AplicarControl(void *pvParameters){ // Aplica control PI hasta alcanzar reg
                 // CÃ¡lculo de mando1
                 mando2 = prop2 + kinteg2 * integ2;
                 
-                if(contador == 100){
+                if(contador2 == 800){
                     sprintf(str,"Luxes 3 , 4: %d, %d mando2: %d;\n", luxes3,luxes4,mando2);
                     putsUART(str);
-                    contador = 0;
+                    contador2 = 0;
                 }
                 // Anti-Windup
                 if (mando2 > MANDO_MAX) { 
@@ -319,12 +323,13 @@ void AplicarControl(void *pvParameters){ // Aplica control PI hasta alcanzar reg
                 }
 
                 // ActuaciÃ³n sobre motor
-                setDcPWM2(PIN_PWM2, mando2);
+                setDcPWM(PIN_PWM2, mando2);
                 }
             }
             
             
-            contador ++; //debug
+            contador1 ++; //debug
+            contador2 ++;
         }
     }
     
@@ -364,15 +369,20 @@ void vApplicationIdleHook(void){
 void InitHardware(void){
     inicializarADCPolling(1<<PIN_ADC_1 | 1<<PIN_ADC_2 | 1<<PIN_ADC_5 | 1<<PIN_ADC_6);    
     InicializarReloj();
-    
+    /*
     inicializarPWM(PIN_PWM1, FRECUENCIA);
     activarPWM(PIN_PWM1);
     setFrecuencia(FRECUENCIA);
+     
     
     inicializarPWM2(PIN_PWM2, FRECUENCIA);
     activarPWM2(PIN_PWM2);
     setFrecuencia2(FRECUENCIA);
+    */
     
+    inicializarPWM(PIN_PWM1 | PIN_PWM2, FRECUENCIA);
+    activarPWM(PIN_PWM1 | PIN_PWM2);
+    setFrecuencia(FRECUENCIA);
     
     inicializarUART(BAUD_RATE);
     InitTimer2();
